@@ -5,8 +5,7 @@ const esc =      require('ansi-escapes')
 const chalk =    require('chalk')
 const figures =  require('figures')
 const wrap =     require('prompt-skeleton')
-
-
+const _ = require('underscore')
 
 const SelectPrompt = {
 
@@ -90,8 +89,6 @@ const SelectPrompt = {
 	}
 }
 
-
-
 const defaults = {
 	  values:  []
 	, value:   null
@@ -111,9 +108,10 @@ const selectPrompt = (msg, values, opt) => {
 	p.values = values
 	p.value = p.values[p.cursor].value
 
+	if (_.isNumber(opt.timeout)) {
+		setTimeout(() => p.close(), parseInt(opt.timeout));
+	}
 	return wrap(p)
 }
-
-
 
 module.exports = Object.assign(selectPrompt, {SelectPrompt})
