@@ -15,9 +15,9 @@
 		"radio",
 		"prompt"
 	],
-	"author": "Jannis R <mail@jannisr.de>",
-	"homepage": "https://github.com/derhuerst/select-prompt",
-	"repository": "git://github.com/derhuerst/select-prompt.git",
+	"author": "Stuart Zhang <stuartpage@qq.com>",
+	"homepage": "https://github.com/stuartZhang/select-prompt.git",
+	"repository": "https://github.com/stuartZhang/select-prompt.git",
 	"license": "ISC",
 	"engines": {
 		"node": ">=4"
