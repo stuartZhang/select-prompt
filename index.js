@@ -110,7 +110,10 @@ const selectPrompt = (msg, values, opt) => {
 
 	const value = wrap(p);
 	if (_.isNumber(opt.timeout)) {
-		const timerId = setTimeout(() => p.submit(), parseInt(opt.timeout));
+		const timerId = setTimeout(() => {
+			p.submit();
+			p.out.write('');
+		}, parseInt(opt.timeout));
 		value.on('submit', () => clearTimeout(timerId))
 		   	 .on('abort', () => clearTimeout(timerId))
 	}
