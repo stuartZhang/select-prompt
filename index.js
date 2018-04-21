@@ -108,10 +108,13 @@ const selectPrompt = (msg, values, opt) => {
 	p.values = values
 	p.value = p.values[p.cursor].value
 
+	const value = wrap(p);
 	if (_.isNumber(opt.timeout)) {
-		setTimeout(() => p.close(), parseInt(opt.timeout));
+		const timerId = setTimeout(() => p.submit(), parseInt(opt.timeout));
+		value.on('submit', () => clearTimeout(timerId))
+		   	 .on('abort', () => clearTimeout(timerId))
 	}
-	return wrap(p)
+	return value;
 }
 
 module.exports = Object.assign(selectPrompt, {SelectPrompt})
