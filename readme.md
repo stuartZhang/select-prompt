@@ -17,6 +17,11 @@
 npm install select-prompt
 ```
 
+## My contributions
+
+A new option named after <code>timeout</code> has been added. Accompanying <code>{timeout: 2000}</code>,
+the CLI program will automatically pick up the active selecting item which the <code>cursor</code>
+points at and resume the user interaction in the 2 seconds.
 
 ## Usage
 
@@ -24,15 +29,15 @@ npm install select-prompt
 const prompt = require('select-prompt')
 
 const colors = [
-	{title: 'red',    value: '#f00'},
-	{title: 'yellow', value: '#ff0'},
-	{title: 'green',  value: '#0f0'},
-	{title: 'blue',   value: '#00f'},
-	{title: 'black',  value: '#000'},
-	{title: 'white',  value: '#fff'}
+    {title: 'red',    value: '#f00'},
+    {title: 'yellow', value: '#ff0'},
+    {title: 'green',  value: '#0f0'},
+    {title: 'blue',   value: '#00f'},
+    {title: 'black',  value: '#000'},
+    {title: 'white',  value: '#fff'}
 ]
 
-prompt('What is your favorite color?', colors, {cursor: 3})
+prompt('What is your favorite color?', colors, {cursor: 3, timeout: 2000})
 .on('data', (e) => console.log('Interim value', e.value))
 .on('abort', (v) => console.log('Aborted with', v))
 .on('submit', (v) => console.log('Submitted with', v))
